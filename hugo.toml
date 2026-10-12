@@ -4,16 +4,15 @@
 # ─────────────────────────────────────────────
 baseURL = "https://example.com/"
 title = "Tiul Korean"
-defaultContentLanguage = "ko"
-locale = "ko-KR"
+defaultContentLanguage = "en"
+locale = "en-US"
 timeZone = "Asia/Seoul"
 
-# 한글 글자 수·읽기 시간 계산을 정확하게
-hasCJKLanguage = true
-summaryLength = 120
+# 본문은 영어 위주라 단어 수 기준 읽기 시간 계산
+hasCJKLanguage = false
+summaryLength = 40
 
 enableRobotsTXT = true
-enableGitInfo = false
 
 [pagination]
   pagerSize = 10
@@ -22,38 +21,41 @@ enableGitInfo = false
   posts = "/posts/:year/:month/:slug/"
 
 [taxonomies]
-  tag = "tags"
+  level = "levels"          # beginner / intermediate / advanced
   category = "categories"
+  tag = "tags"
 
 [params]
-  description = "매일 한 편씩, 한국어와 한국 문화에 관한 이야기"
+  description = "Bite-sized Korean lessons — real expressions, example sentences and quick quizzes."
   author = "Tiul Korean"
-  # 글 하단 출처 표시 기본 문구 (공공데이터 등 출처 표기용)
   showSource = true
-  # 홈 화면에 보여줄 최신 글 수
   homePosts = 10
+  # 난이도 표시 순서·이름 (key 는 front matter 의 levels 값)
+  [params.levelLabels]
+    beginner = "Beginner"
+    intermediate = "Intermediate"
+    advanced = "Advanced"
 
 [menus]
   [[menus.main]]
-    name = "글 목록"
+    name = "Lessons"
     pageRef = "/posts"
     weight = 10
   [[menus.main]]
-    name = "카테고리"
-    pageRef = "/categories"
+    name = "Levels"
+    pageRef = "/levels"
     weight = 20
   [[menus.main]]
-    name = "태그"
-    pageRef = "/tags"
+    name = "Topics"
+    pageRef = "/categories"
     weight = 30
   [[menus.main]]
-    name = "소개"
+    name = "About"
     pageRef = "/about"
     weight = 40
 
 [markup]
   [markup.goldmark.renderer]
-    # Airflow가 만든 본문에 HTML이 섞여도 렌더링되도록
     unsafe = true
   [markup.highlight]
     style = "github"

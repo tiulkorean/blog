@@ -1,10 +1,12 @@
 ---
-title: "소개"
-description: "이 블로그에 대해"
+title: "About"
+description: "About Tiul Korean"
 ---
 
-**Tiul Korean**은 한국어 표현과 한국 문화에 관한 짧은 글을 매일 한 편씩 올리는 블로그입니다.
+**Tiul Korean** publishes short Korean lessons for learners — one expression at a time, with romanization, example sentences, a vocabulary list and a quick quiz.
 
-글의 소재는 공공데이터와 공개 API에서 수집하고, 정리·검수를 거쳐 게시합니다. 원 자료가 있는 글에는 하단에 출처를 함께 표시합니다.
+Every lesson is tagged **Beginner**, **Intermediate** or **Advanced**, so you can browse by [level](/levels/).
 
-잘못된 내용이 있으면 알려 주세요.
+Some lesson material is gathered from public data and open APIs, then edited and reviewed before publishing. When a lesson is based on an outside source, it is credited at the bottom of the page.
+
+Spotted a mistake? Please let us know.

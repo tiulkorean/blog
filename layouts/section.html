@@ -1,7 +1,7 @@
 {{ define "main" }}
 <header class="page-head">
   <h1>{{ .Title }}</h1>
-  <p class="muted">총 {{ len .RegularPages }}편</p>
+  <p class="muted">{{ len .RegularPages }} {{ cond (eq (len .RegularPages) 1) "lesson" "lessons" }}</p>
 </header>
 
 <section class="list">
@@ -9,7 +9,7 @@
   {{ range $pager.Pages }}
     {{ partial "post-card.html" . }}
   {{ else }}
-    <p class="empty">아직 글이 없습니다.</p>
+    <p class="empty">No lessons yet.</p>
   {{ end }}
 </section>
 

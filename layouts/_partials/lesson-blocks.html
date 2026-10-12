@@ -1,0 +1,66 @@
+{{/* 예문 · 단어장 · 퀴즈. front matter 데이터가 있을 때만 출력 */}}
+
+{{ with .Params.examples }}
+<section class="block" aria-labelledby="examples">
+  <h2 id="examples">Examples</h2>
+  <ol class="examples">
+    {{ range . }}
+    <li>
+      <p class="ex-ko" lang="ko">{{ .ko | markdownify }}</p>
+      {{ with .roman }}<p class="roman">{{ . }}</p>{{ end }}
+      {{ with .en }}<p class="ex-en">{{ . | markdownify }}</p>{{ end }}
+    </li>
+    {{ end }}
+  </ol>
+</section>
+{{ end }}
+
+{{ with .Params.vocab }}
+<section class="block" aria-labelledby="vocabulary">
+  <h2 id="vocabulary">Vocabulary</h2>
+  <ul class="vocab">
+    {{ range . }}
+    <li>
+      <span class="v-ko" lang="ko">{{ .ko }}</span>
+      {{ with .roman }}<span class="roman">{{ . }}</span>{{ end }}
+      <span class="v-en">{{ .en }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+
+{{ with .Params.quiz }}
+<section class="block" aria-labelledby="quiz">
+  <h2 id="quiz">Quick quiz</h2>
+  {{ range $i, $q := . }}
+  <div class="quiz-q" data-answer="{{ $q.answer }}">
+    <p class="q-text"><span class="q-num">{{ add $i 1 }}</span><span>{{ $q.question | markdownify }}</span></p>
+    <div class="q-opts">
+      {{ range $j, $opt := $q.options }}
+      <button type="button" class="q-opt" data-i="{{ $j }}">{{ $opt | markdownify }}</button>
+      {{ end }}
+    </div>
+    <p class="q-explain" hidden>{{ with $q.explanation }}{{ . | markdownify }}{{ end }}</p>
+  </div>
+  {{ end }}
+</section>
+<script>
+document.querySelectorAll('.quiz-q').forEach(function (q) {
+  var answer = q.dataset.answer;
+  q.querySelectorAll('.q-opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (q.classList.contains('done')) return;
+      q.classList.add('done');
+      q.querySelectorAll('.q-opt').forEach(function (b) {
+        if (b.dataset.i === answer) b.classList.add('correct');
+      });
+      if (btn.dataset.i !== answer) btn.classList.add('wrong');
+      var ex = q.querySelector('.q-explain');
+      ex.insertAdjacentHTML('afterbegin', '<strong>' + (btn.dataset.i === answer ? 'Correct! ' : 'Not quite. ') + '</strong>');
+      ex.hidden = false;
+    });
+  });
+});
+</script>
+{{ end }}

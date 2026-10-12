@@ -3,30 +3,36 @@
   <header class="post-head">
     {{ if eq .Section "posts" }}
     <div class="meta">
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006년 1월 2일" }}</time>
-      <span class="dot">·</span><span>{{ .ReadingTime }}분 읽기</span>
+      {{ partial "level-badge.html" . }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      <span class="dot">·</span><span>{{ .ReadingTime }} min read</span>
       {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
-      {{ if .Draft }}<span class="badge">초안</span>{{ end }}
+      {{ if .Draft }}<span class="badge">Draft</span>{{ end }}
     </div>
     {{ end }}
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
   </header>
 
-  {{ if and (eq .Section "posts") (gt .WordCount 800) }}
-    {{ with .TableOfContents }}{{ if ne . `<nav id="TableOfContents"></nav>` }}
-    <details class="toc"><summary>목차</summary>{{ . }}</details>
-    {{ end }}{{ end }}
+  {{ with .Params.expression }}
+  <div class="expr">
+    <p class="expr-label">Today's expression</p>
+    <p class="expr-ko" lang="ko">{{ .ko }}</p>
+    {{ with .roman }}<p class="roman expr-roman">{{ . }}</p>{{ end }}
+    {{ with .en }}<p class="expr-en">{{ . }}</p>{{ end }}
+  </div>
   {{ end }}
 
   <div class="prose">
     {{ .Content }}
   </div>
 
+  {{ partial "lesson-blocks.html" . }}
+
   {{ if and site.Params.showSource .Params.source }}
     {{ with .Params.source }}{{ if .name }}
     <aside class="source">
-      <strong>출처</strong>
+      <strong>Source</strong>
       {{ if .url }}<a href="{{ .url }}" rel="noopener" target="_blank">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
     </aside>
     {{ end }}{{ end }}
@@ -40,9 +46,9 @@
 
   {{ if eq .Section "posts" }}
   <nav class="post-nav">
-    {{/* PrevInSection = 더 오래된 글, NextInSection = 더 최근 글 */}}
-    {{ with .PrevInSection }}<a class="older" href="{{ .RelPermalink }}"><small>← 이전 글</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
-    {{ with .NextInSection }}<a class="newer" href="{{ .RelPermalink }}"><small>다음 글 →</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{/* PrevInSection = older post, NextInSection = newer post */}}
+    {{ with .PrevInSection }}<a class="older" href="{{ .RelPermalink }}"><small>← Previous</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ with .NextInSection }}<a class="newer" href="{{ .RelPermalink }}"><small>Next →</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
   </nav>
   {{ end }}
 </article>
