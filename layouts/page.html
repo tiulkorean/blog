@@ -14,6 +14,13 @@
     {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
   </header>
 
+  {{ with .Params.cover }}{{ if .src }}
+  <figure class="cover">
+    <img src="{{ partial "media-src.html" (dict "page" $ "src" .src) }}" alt="{{ .alt }}" loading="eager">
+    {{ with .credit }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  </figure>
+  {{ end }}{{ end }}
+
   {{ with .Params.expression }}
   <div class="expr">
     <p class="expr-label">Today's expression</p>
@@ -22,6 +29,17 @@
     {{ with .en }}<p class="expr-en">{{ . }}</p>{{ end }}
   </div>
   {{ end }}
+
+  {{ with .Params.video }}{{ if .youtube }}
+  <figure class="video">
+    <div class="video-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/{{ .youtube }}{{ with .start }}?start={{ . }}{{ end }}"
+        title="{{ .caption | default "Video" }}" loading="lazy" allowfullscreen
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    </div>
+    {{ with .caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  </figure>
+  {{ end }}{{ end }}
 
   <div class="prose">
     {{ .Content }}

@@ -17,8 +17,13 @@ enableRobotsTXT = true
 [pagination]
   pagerSize = 10
 
+# 레슨 주소: /lessons/<slug>/ , 목록: /lessons/
+# (content/posts 폴더 이름은 그대로 두고 주소만 바꿈)
 [permalinks]
-  posts = "/posts/:year/:month/:slug/"
+  [permalinks.page]
+    posts = "/lessons/:slug/"
+  [permalinks.section]
+    posts = "/lessons/"
 
 [taxonomies]
   level = "levels"          # beginner / intermediate / advanced

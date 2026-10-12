@@ -157,9 +157,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   text-decoration: none; letter-spacing: .01em; line-height: 1.7;
 }
 .meta .level { margin-right: 4px; }
-.level-beginner { color: var(--lv-beg); background: var(--lv-beg-bg); }
-.level-intermediate { color: var(--lv-int); background: var(--lv-int-bg); }
-.level-advanced { color: var(--lv-adv); background: var(--lv-adv-bg); }
+.level.level-beginner { color: var(--lv-beg); background: var(--lv-beg-bg); }
+.level.level-intermediate { color: var(--lv-int); background: var(--lv-int-bg); }
+.level.level-advanced { color: var(--lv-adv); background: var(--lv-adv-bg); }
 .meta a.level:hover { color: inherit; filter: brightness(.95); }
 .level-beginner:hover { color: var(--lv-beg); }
 .level-intermediate:hover { color: var(--lv-int); }
@@ -247,4 +247,23 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   .post-head h1 { font-size: 26px; }
   .post-nav { grid-template-columns: 1fr; }
   .post-nav .newer { text-align: left; }
+}
+
+/* ───────── 이미지·영상 ───────── */
+.cover { margin: 28px 0 0; }
+.cover img { width: 100%; height: auto; display: block; border-radius: 14px; }
+figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+.video { margin: 28px 0 0; }
+.video-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.prose iframe { max-width: 100%; border: 0; }
+.prose figure { margin: 24px 0; }
+.prose div:has(> iframe) { border-radius: var(--radius); overflow: hidden; margin: 24px 0; }
+
+.card.has-thumb { display: grid; grid-template-columns: 1fr 132px; gap: 20px; align-items: start; }
+.card-thumb { display: block; margin-top: 30px; }
+.card-thumb img { width: 132px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); display: block; }
+@media (max-width: 560px) {
+  .card.has-thumb { grid-template-columns: 1fr 88px; gap: 14px; }
+  .card-thumb img { width: 88px; }
 }

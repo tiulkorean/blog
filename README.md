@@ -81,7 +81,34 @@ English explanation in Markdown. Korean can be mixed in, e.g. **눈치** (*nunch
 - `draft: true` 인 글은 `hugo server -D`에서만 보이고 배포 빌드에서 빠집니다. 화면에 **Draft** 배지가 붙습니다.
 - `date`가 미래인 글도 배포 빌드에서 빠집니다 → 예약 발행처럼 쓸 수 있습니다.
 - 같은 `slug`로 파일을 덮어쓰면 같은 주소의 글이 갱신됩니다 (재실행해도 중복 글이 안 생김).
-- 주소 형식: `/posts/2026/10/<slug>/`
+- 주소 형식: 레슨 `/lessons/<slug>/`, 목록 `/lessons/` (파일은 계속 `content/posts/`에 둠)
+
+### 이미지·영상
+
+front matter로 넣기 (Airflow 권장 — 화면 위치가 통일됨)
+
+```yaml
+cover:                     # 글 상단 대표 이미지 + 목록 썸네일 + SNS 공유 미리보기(og:image)
+  src: "/images/nunchi.jpg"      # static/images/ 에 둔 파일, 또는 https://... 외부 주소
+  alt: "People at a meeting table"
+  credit: "Photo: Unsplash"
+video:                     # 유튜브 영상 (핵심 표현 박스 바로 아래)
+  youtube: "VIDEO_ID"      # youtube.com/watch?v=VIDEO_ID
+  start: 30                # 시작 초 (선택)
+  caption: "How to say 눈치"
+```
+
+본문 안에 넣기 (설명 중간에 넣고 싶을 때)
+
+```markdown
+![Alt text](/images/example.jpg)
+
+{{</* youtube VIDEO_ID */>}}
+```
+
+이미지 파일은 `static/images/`에 두면 `/images/파일명`으로 쓸 수 있습니다.
+글마다 이미지가 많으면 글을 폴더로 만들어도 됩니다: `content/posts/2026-10-13-xxx/index.md` + 같은 폴더의 `cover.jpg` → `src: "cover.jpg"`
+이미지·영상은 직접 찍었거나 사용이 허락된 것만 쓰세요 (Unsplash 등 무료 라이선스, 공공누리 이미지 등).
 
 손으로 새 글을 만들 때: `hugo new content posts/2026-10-13-my-lesson.md`
 

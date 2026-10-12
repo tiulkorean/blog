@@ -1,0 +1,16 @@
+{{/*
+  이미지 경로를 실제 주소로 바꿔 돌려줌.
+  입력: dict "page" 페이지 "src" 경로
+  - http(s)://... → 그대로
+  - 글 폴더(page bundle) 안 파일 → 그 파일 주소
+  - /images/... → static 폴더 기준 주소
+*/}}
+{{ $src := .src }}
+{{ if not (or (hasPrefix $src "http://") (hasPrefix $src "https://")) }}
+  {{ with .page.Resources.Get $src }}
+    {{ $src = .Permalink }}
+  {{ else }}
+    {{ $src = absURL $src }}
+  {{ end }}
+{{ end }}
+{{ return $src }}

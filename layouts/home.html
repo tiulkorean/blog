@@ -19,7 +19,7 @@
     <p class="empty">No lessons yet.</p>
   {{ end }}
   {{ if gt (len $posts) (site.Params.homePosts | default 10) }}
-    <p class="more"><a href="{{ "/posts/" | relURL }}">All lessons →</a></p>
+    <p class="more"><a href="{{ (site.GetPage "/posts").RelPermalink }}">All lessons →</a></p>
   {{ end }}
 </section>
 {{ end }}

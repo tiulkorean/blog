@@ -1,13 +1,20 @@
-<article class="card">
-  <div class="meta">
-    {{ partial "level-badge.html" . }}
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-    {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
-    {{ if .Draft }}<span class="badge">Draft</span>{{ end }}
+<article class="card{{ with .Params.cover }}{{ if .src }} has-thumb{{ end }}{{ end }}">
+  <div class="card-body">
+    <div class="meta">
+      {{ partial "level-badge.html" . }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
+      {{ if .Draft }}<span class="badge">Draft</span>{{ end }}
+    </div>
+    <h2 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    {{ with .Params.expression }}
+    <p class="card-expr"><span lang="ko">{{ .ko }}</span>{{ with .roman }} <span class="roman">{{ . }}</span>{{ end }}{{ with .en }} <span class="muted">— {{ . }}</span>{{ end }}</p>
+    {{ end }}
+    <p class="card-summary">{{ .Description | default (.Summary | plainify | truncate 140) }}</p>
   </div>
-  <h2 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-  {{ with .Params.expression }}
-  <p class="card-expr"><span lang="ko">{{ .ko }}</span>{{ with .roman }} <span class="roman">{{ . }}</span>{{ end }}{{ with .en }} <span class="muted">— {{ . }}</span>{{ end }}</p>
-  {{ end }}
-  <p class="card-summary">{{ .Description | default (.Summary | plainify | truncate 140) }}</p>
+  {{ with .Params.cover }}{{ if .src }}
+  <a class="card-thumb" href="{{ $.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ partial "media-src.html" (dict "page" $ "src" .src) }}" alt="" loading="lazy">
+  </a>
+  {{ end }}{{ end }}
 </article>
