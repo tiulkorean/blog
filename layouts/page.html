@@ -30,6 +30,21 @@
   </div>
   {{ end }}
 
+  {{ with .Params.scene }}
+  <div class="scene">
+    <p class="scene-label">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 9h18v11H3zM3 9l2-5 4 1-2 4m4 0 2-4 4 1-2 3"/></svg>
+      In the scene
+    </p>
+    <div class="scene-text">{{ . | markdownify }}</div>
+    {{ with $.Params.dramas }}
+    <p class="scene-dramas">Heard in:
+      {{ range $i, $d := . }}{{ if $i }}, {{ end }}<a href="{{ (printf "/dramas/%s/" (urlize $d)) | relURL }}"><em>{{ $d }}</em></a>{{ end }}
+    </p>
+    {{ end }}
+  </div>
+  {{ end }}
+
   {{ with .Params.video }}{{ if .youtube }}
   <figure class="video">
     <div class="video-frame">

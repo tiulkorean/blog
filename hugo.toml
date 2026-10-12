@@ -27,11 +27,12 @@ enableRobotsTXT = true
 
 [taxonomies]
   level = "levels"          # beginner / intermediate / advanced
-  category = "categories"
+  category = "categories"   # Drama Phrases / Slang / Honorifics / Culture ...
+  drama = "dramas"          # 표현이 나오는 드라마 제목 (선택)
   tag = "tags"
 
 [params]
-  description = "Bite-sized Korean lessons — real expressions, example sentences and quick quizzes."
+  description = "Learn the Korean you hear in K-dramas — one expression at a time, with example lines and quick quizzes."
   author = "Tiul Korean"
   showSource = true
   homePosts = 10

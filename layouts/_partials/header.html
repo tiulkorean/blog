@@ -1,7 +1,8 @@
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="{{ "/" | relURL }}">
-      <span class="brand-mark" aria-hidden="true">가</span>
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} home">
+      <img class="brand-logo light" src="{{ "images/brand/logo.png" | relURL }}" alt="" width="44" height="38">
+      <img class="brand-logo dark" src="{{ "images/brand/logo-dark.png" | relURL }}" alt="" width="44" height="38">
       <span>{{ site.Title }}</span>
     </a>
     <nav class="nav" aria-label="Main">

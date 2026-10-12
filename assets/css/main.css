@@ -1,13 +1,16 @@
 /* ───────── 색·글꼴 토큰 ───────── */
 :root {
-  --bg: #fbfaf7;
+  /* 로고 색: 올리브 #617530 · 새싹 #90a82e */
+  --brand: #617530;
+  --leaf: #90a82e;
+  --bg: #fafaf5;
   --surface: #ffffff;
-  --text: #1f1d1a;
-  --muted: #6f6a62;
-  --line: #e7e3dc;
-  --accent: #c2410c;       /* 단청 주홍 */
-  --accent-soft: #fdeee6;
-  --code-bg: #f4f1ec;
+  --text: #1e2316;
+  --muted: #676d5c;
+  --line: #e3e6d8;
+  --accent: #617530;
+  --accent-soft: #eff3e1;
+  --code-bg: #f1f3e8;
   --radius: 10px;
   --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
           "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
@@ -15,14 +18,16 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161514;
-    --surface: #1e1c1a;
-    --text: #ece8e1;
-    --muted: #a19b91;
-    --line: #2e2b27;
-    --accent: #fb923c;
-    --accent-soft: #3a2417;
-    --code-bg: #24211e;
+    --brand: #b4c47e;
+    --leaf: #c2d85a;
+    --bg: #141611;
+    --surface: #1b1e17;
+    --text: #e9ecdf;
+    --muted: #a3a993;
+    --line: #2c3124;
+    --accent: #b4c47e;
+    --accent-soft: #252c1a;
+    --code-bg: #20241b;
   }
 }
 
@@ -50,9 +55,13 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 10; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; letter-spacing: -0.02em; }
-.brand-mark {
-  display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
-  background: var(--accent); color: #fff; font-size: 16px; font-weight: 800;
+.brand { color: var(--brand); }
+.brand:hover { color: var(--brand); }
+.brand-logo { height: 38px; width: auto; display: block; }
+.brand-logo.dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .brand-logo.light { display: none; }
+  .brand-logo.dark { display: block; }
 }
 .nav { display: flex; gap: 18px; font-size: 15px; }
 .nav a { text-decoration: none; color: var(--muted); }
@@ -137,17 +146,17 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
 /* ───────── 학습 요소 ───────── */
 :root {
-  --lv-beg: #15803d;  --lv-beg-bg: #e7f6ec;
-  --lv-int: #1d4ed8;  --lv-int-bg: #e8eefc;
-  --lv-adv: #b91c1c;  --lv-adv-bg: #fbe9e9;
-  --ok: #15803d; --ok-bg: #e7f6ec; --bad: #b91c1c; --bad-bg: #fbe9e9;
+  --lv-beg: #5b7410;  --lv-beg-bg: #eef5d6;
+  --lv-int: #3f5a2a;  --lv-int-bg: #e2ead6;
+  --lv-adv: #85561c;  --lv-adv-bg: #f4ead9;
+  --ok: #4d6a12; --ok-bg: #eef5d6; --bad: #b91c1c; --bad-bg: #fbe9e9;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --lv-beg: #4ade80;  --lv-beg-bg: #15301f;
-    --lv-int: #93b4fd;  --lv-int-bg: #1b2744;
-    --lv-adv: #fca5a5;  --lv-adv-bg: #3b1d1d;
-    --ok: #4ade80; --ok-bg: #15301f; --bad: #fca5a5; --bad-bg: #3b1d1d;
+    --lv-beg: #c8de6a;  --lv-beg-bg: #2a3315;
+    --lv-int: #a9c48f;  --lv-int-bg: #22301b;
+    --lv-adv: #e3b878;  --lv-adv-bg: #352816;
+    --ok: #c8de6a; --ok-bg: #2a3315; --bad: #fca5a5; --bad-bg: #3b1d1d;
   }
 }
 .roman { color: var(--muted); font-style: italic; font-size: .92em; }
@@ -204,7 +213,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   display: flex; flex-direction: column; gap: 2px; padding: 14px 16px;
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
 }
-.v-ko { font-size: 20px; font-weight: 700; }
+.v-ko { font-size: 20px; font-weight: 700; line-height: 1.4; word-break: break-all; }
 .v-en { font-size: 15px; }
 
 .quiz-q { padding: 18px 20px; margin-bottom: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
@@ -212,7 +221,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .q-text p { margin: 0; }
 .q-num {
   flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--accent); color: #fff; font-size: 12px; margin-top: 3px;
+  background: var(--leaf); color: #fff; font-size: 12px; margin-top: 3px;
 }
 .q-opts { display: flex; flex-direction: column; gap: 8px; }
 .q-opt {
@@ -267,3 +276,24 @@ figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
   .card.has-thumb { grid-template-columns: 1fr 88px; gap: 14px; }
   .card-thumb img { width: 88px; }
 }
+
+/* ───────── 드라마 장면 박스 ───────── */
+.scene {
+  margin: 16px 0 0; padding: 18px 22px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--leaf);
+}
+.scene-label {
+  display: flex; align-items: center; gap: 6px; margin: 0 0 6px;
+  font-size: 12px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--brand);
+}
+.scene-text p { margin: 0; }
+.scene-text { font-size: 16px; }
+.scene-dramas { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+.scene-dramas a { color: var(--brand); }
+
+/* ───────── 홈 상단 ───────── */
+.hero-row { display: flex; align-items: center; gap: 28px; }
+.hero-logo { width: 120px; height: auto; flex: none; }
+.hero-logo.dark { display: none; }
+@media (prefers-color-scheme: dark) { .hero-logo.light { display: none; } .hero-logo.dark { display: block; } }
+@media (max-width: 560px) { .hero-row { flex-direction: column; align-items: flex-start; gap: 16px; } .hero-logo { width: 88px; } }

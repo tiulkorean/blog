@@ -3,7 +3,9 @@ title: "About"
 description: "About Tiul Korean"
 ---
 
-**Tiul Korean** publishes short Korean lessons for learners — one expression at a time, with romanization, example sentences, a vocabulary list and a quick quiz.
+**Tiul Korean** helps you learn the Korean you hear in K-dramas. Each lesson takes one expression — the reactions, the confessions, the everyday lines characters say again and again — and explains what it really means, with romanization, example sentences, a vocabulary list and a quick quiz.
+
+*Tiul* is a little sprout: one new expression a day, growing into real Korean.
 
 Every lesson is tagged **Beginner**, **Intermediate** or **Advanced**, so you can browse by [level](/levels/).
 
