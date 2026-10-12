@@ -1,4 +1,4 @@
-# 한국어 이야기 (Hugo 블로그)
+# Tiul Korean (Hugo 블로그)
 
 외부 테마 없이 `layouts/`에 직접 만든 가벼운 테마를 쓰는 Hugo 블로그입니다.
 Airflow가 `content/posts/`에 Markdown 파일을 넣으면 그대로 글이 되도록 구성했습니다.

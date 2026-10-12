@@ -3,7 +3,7 @@
 #  배포 주소가 정해지면 baseURL 만 바꾸면 됩니다.
 # ─────────────────────────────────────────────
 baseURL = "https://example.com/"
-title = "한국어 이야기"
+title = "Tiul Korean"
 defaultContentLanguage = "ko"
 locale = "ko-KR"
 timeZone = "Asia/Seoul"
@@ -27,7 +27,7 @@ enableGitInfo = false
 
 [params]
   description = "매일 한 편씩, 한국어와 한국 문화에 관한 이야기"
-  author = "한국어 이야기"
+  author = "Tiul Korean"
   # 글 하단 출처 표시 기본 문구 (공공데이터 등 출처 표기용)
   showSource = true
   # 홈 화면에 보여줄 최신 글 수
