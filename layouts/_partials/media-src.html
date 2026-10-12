@@ -10,7 +10,7 @@
   {{ with .page.Resources.Get $src }}
     {{ $src = .Permalink }}
   {{ else }}
-    {{ $src = absURL $src }}
+    {{ $src = absURL (strings.TrimPrefix "/" $src) }}
   {{ end }}
 {{ end }}
 {{ return $src }}

@@ -2,5 +2,5 @@
 {{ with .Params.levels }}
   {{ $lv := index . 0 | lower }}
   {{ $label := index site.Params.levelLabels $lv | default (title $lv) }}
-  <a class="level level-{{ $lv }}" href="{{ (printf "/levels/%s/" (urlize $lv)) | relURL }}">{{ $label }}</a>
+  <a class="level level-{{ $lv }}" href="{{ (printf "levels/%s/" (urlize $lv)) | relURL }}">{{ $label }}</a>
 {{ end }}

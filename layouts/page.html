@@ -6,7 +6,7 @@
       {{ partial "level-badge.html" . }}
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
       <span class="dot">·</span><span>{{ .ReadingTime }} min read</span>
-      {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
+      {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
       {{ if .Draft }}<span class="badge">Draft</span>{{ end }}
     </div>
     {{ end }}
@@ -39,7 +39,7 @@
     <div class="scene-text">{{ . | markdownify }}</div>
     {{ with $.Params.shows }}
     <p class="scene-dramas">Heard in:
-      {{ range $i, $d := . }}{{ if $i }}, {{ end }}<a href="{{ (printf "/shows/%s/" (urlize $d)) | relURL }}"><em>{{ $d }}</em></a>{{ end }}
+      {{ range $i, $d := . }}{{ if $i }}, {{ end }}<a href="{{ (printf "shows/%s/" (urlize $d)) | relURL }}"><em>{{ $d }}</em></a>{{ end }}
     </p>
     {{ end }}
   </div>
@@ -73,7 +73,7 @@
 
   {{ with .Params.tags }}
   <ul class="tags">
-    {{ range . }}<li><a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}">#{{ . }}</a></li>{{ end }}
+    {{ range . }}<li><a href="{{ (printf "tags/%s/" (urlize .)) | relURL }}">#{{ . }}</a></li>{{ end }}
   </ul>
   {{ end }}
 

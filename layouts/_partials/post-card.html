@@ -3,7 +3,7 @@
     <div class="meta">
       {{ partial "level-badge.html" . }}
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-      {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
+      {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
       {{ if .Draft }}<span class="badge">Draft</span>{{ end }}
     </div>
     <h2 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

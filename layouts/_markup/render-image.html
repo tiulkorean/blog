@@ -1,0 +1,4 @@
+{{- /* 본문 이미지: 글 폴더 안 파일, /images/... , 외부 주소 모두 처리 */ -}}
+{{- $src := partial "media-src.html" (dict "page" .Page "src" .Destination) -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+{{- /**/ -}}

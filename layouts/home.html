@@ -11,7 +11,7 @@
   </div>
   <div class="hero-levels">
     {{ range slice "beginner" "intermediate" "advanced" }}
-      <a class="level level-{{ . }}" href="{{ (printf "/levels/%s/" .) | relURL }}">{{ index site.Params.levelLabels . }}</a>
+      <a class="level level-{{ . }}" href="{{ (printf "levels/%s/" .) | relURL }}">{{ index site.Params.levelLabels . }}</a>
     {{ end }}
   </div>
 </section>
