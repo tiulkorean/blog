@@ -10,7 +10,7 @@ expression:
   en: "Oh no, what do I do?!"
 
 scene: "The heroine finally gets the courage to text her crush… then realizes she sent it to her boss instead. She stares at her phone, covers her mouth and whispers **어떡해, 어떡해…**"
-dramas: []
+shows: []
 
 levels: ["beginner"]
 categories: ["Drama Phrases"]

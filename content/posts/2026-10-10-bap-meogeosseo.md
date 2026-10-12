@@ -10,7 +10,7 @@ expression:
   en: "Have you eaten? (= Are you okay? I care about you.)"
 
 scene: "Late at night, the male lead finds her still working alone in the office. He doesn’t ask what’s wrong. He just sets down a convenience-store bag and asks, **밥은 먹었어?**"
-dramas: []
+shows: []
 
 levels: ["intermediate"]
 categories: ["Culture"]

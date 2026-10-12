@@ -11,11 +11,11 @@ expression:
   roman: "hangugeo pyohyeon"
   en: "English meaning"
 
-# ── 드라마 장면 (선택) ─────────────────
-# 이 표현이 드라마에서 어떤 상황에 나오는지 영어로 짧게 설명
-scene: "When the lead realizes ... she whispers this."
-# 이 표현이 나오는 드라마 제목 (영어 공식 제목). 확실할 때만 넣기
-dramas: []
+# ── 장면 (선택. 비우면 표시 안 됨) ──────
+# 이 표현이 쓰이는 상황을 영어로 짧게 묘사 (드라마 장면, 일상 상황 모두 가능)
+scene: ""
+# 이 표현이 나오는 작품 제목: 드라마·예능·노래 등 (영어 공식 제목). 확실할 때만 넣기
+shows: []
 
 # ── 미디어 (선택. 없으면 지우거나 비워 두기) ──
 cover:                        # 대표 이미지: 글 상단 + 목록 썸네일 + SNS 공유 미리보기
@@ -29,7 +29,7 @@ video:                        # 유튜브 영상 (핵심 표현 박스 아래에
 
 # ── 분류 ───────────────────────────────
 levels: ["beginner"]          # beginner | intermediate | advanced 중 하나
-categories: ["Drama Phrases"] # Drama Phrases | Slang | Honorifics | Culture ...
+categories: ["Everyday"]      # Everyday | Drama Phrases | K-pop | Slang | Grammar | Honorifics | Culture
 tags: []
 
 # ── 학습 데이터 (없으면 섹션이 표시되지 않음) ──

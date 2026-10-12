@@ -1,6 +1,6 @@
 # Tiul Korean (Hugo 블로그)
 
-외국인 한국어 학습자를 위한 블로그입니다. 화면·설명은 영어, 학습 대상인 한국어는 로마자·번역과 함께 보여 줍니다.
+외국인 한국어 학습자를 위한 학습·콘텐츠 블로그입니다 (K-드라마·K-pop·예능·일상 표현). 화면·설명은 영어, 학습 대상인 한국어는 로마자·번역과 함께 보여 줍니다.
 외부 테마 없이 `layouts/`에 직접 만든 테마를 쓰며, Airflow가 `content/posts/`에 Markdown 파일을 넣으면 그대로 글이 됩니다.
 
 ## 1. 로컬에서 실행
@@ -49,8 +49,11 @@ expression:                     # 오늘의 핵심 표현 (글 상단 강조 박
   roman: "nunchi"               # 국립국어원 로마자 표기법 기준 권장
   en: "the ability to sense the mood"
 
+scene: "Late at night, he sets down a bag and asks, **밥은 먹었어?**"   # 상황 묘사 (선택)
+shows: ["Drama Title"]          # 표현이 나오는 드라마·예능·노래 제목 (선택, 확실할 때만)
+
 levels: ["intermediate"]        # beginner | intermediate | advanced 중 하나
-categories: ["Expressions"]     # Expressions | Grammar | Culture | Vocabulary ...
+categories: ["Everyday"]        # Everyday | Drama Phrases | K-pop | Slang | Grammar | Honorifics | Culture
 tags: ["culture"]
 
 vocab:                          # 단어장 카드
@@ -76,7 +79,9 @@ English explanation in Markdown. Korean can be mixed in, e.g. **눈치** (*nunch
 ```
 
 규칙
-- `expression`, `vocab`, `examples`, `quiz`, `source` 는 선택 항목입니다. 없으면 해당 섹션이 화면에 나오지 않습니다.
+- `expression`, `scene`, `shows`, `vocab`, `examples`, `quiz`, `source` 는 선택 항목입니다. 비우면 해당 섹션이 화면에 나오지 않습니다.
+- 드라마와 관계없는 일상 표현·문법 레슨은 `scene: ""`, `shows: []` 로 두면 됩니다.
+- `shows` 에 넣은 제목은 `/shows/<제목>/` 에서 작품별로 모아 볼 수 있습니다.
 - 본문(Markdown)에는 설명만 쓰고, 예문·단어·퀴즈는 위 데이터 필드에 넣으세요. 화면 배치는 템플릿이 통일해 줍니다.
 - `draft: true` 인 글은 `hugo server -D`에서만 보이고 배포 빌드에서 빠집니다. 화면에 **Draft** 배지가 붙습니다.
 - `date`가 미래인 글도 배포 빌드에서 빠집니다 → 예약 발행처럼 쓸 수 있습니다.

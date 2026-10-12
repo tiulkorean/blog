@@ -37,9 +37,9 @@
       In the scene
     </p>
     <div class="scene-text">{{ . | markdownify }}</div>
-    {{ with $.Params.dramas }}
+    {{ with $.Params.shows }}
     <p class="scene-dramas">Heard in:
-      {{ range $i, $d := . }}{{ if $i }}, {{ end }}<a href="{{ (printf "/dramas/%s/" (urlize $d)) | relURL }}"><em>{{ $d }}</em></a>{{ end }}
+      {{ range $i, $d := . }}{{ if $i }}, {{ end }}<a href="{{ (printf "/shows/%s/" (urlize $d)) | relURL }}"><em>{{ $d }}</em></a>{{ end }}
     </p>
     {{ end }}
   </div>
