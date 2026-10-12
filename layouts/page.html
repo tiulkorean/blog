@@ -1,0 +1,49 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-head">
+    {{ if eq .Section "posts" }}
+    <div class="meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006년 1월 2일" }}</time>
+      <span class="dot">·</span><span>{{ .ReadingTime }}분 읽기</span>
+      {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
+      {{ if .Draft }}<span class="badge">초안</span>{{ end }}
+    </div>
+    {{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+  </header>
+
+  {{ if and (eq .Section "posts") (gt .WordCount 800) }}
+    {{ with .TableOfContents }}{{ if ne . `<nav id="TableOfContents"></nav>` }}
+    <details class="toc"><summary>목차</summary>{{ . }}</details>
+    {{ end }}{{ end }}
+  {{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  {{ if and site.Params.showSource .Params.source }}
+    {{ with .Params.source }}{{ if .name }}
+    <aside class="source">
+      <strong>출처</strong>
+      {{ if .url }}<a href="{{ .url }}" rel="noopener" target="_blank">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
+    </aside>
+    {{ end }}{{ end }}
+  {{ end }}
+
+  {{ with .Params.tags }}
+  <ul class="tags">
+    {{ range . }}<li><a href="{{ (printf "/tags/%s/" (urlize .)) | relURL }}">#{{ . }}</a></li>{{ end }}
+  </ul>
+  {{ end }}
+
+  {{ if eq .Section "posts" }}
+  <nav class="post-nav">
+    {{/* PrevInSection = 더 오래된 글, NextInSection = 더 최근 글 */}}
+    {{ with .PrevInSection }}<a class="older" href="{{ .RelPermalink }}"><small>← 이전 글</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ with .NextInSection }}<a class="newer" href="{{ .RelPermalink }}"><small>다음 글 →</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}

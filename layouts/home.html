@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>{{ site.Title }}</h1>
+  <p>{{ site.Params.description }}</p>
+</section>
+
+<section class="list">
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ range first (site.Params.homePosts | default 10) $posts.ByDate.Reverse }}
+    {{ partial "post-card.html" . }}
+  {{ else }}
+    <p class="empty">아직 글이 없습니다.</p>
+  {{ end }}
+  {{ if gt (len $posts) (site.Params.homePosts | default 10) }}
+    <p class="more"><a href="{{ "/posts/" | relURL }}">전체 글 보기 →</a></p>
+  {{ end }}
+</section>
+{{ end }}

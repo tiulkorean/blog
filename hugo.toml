@@ -1,0 +1,71 @@
+# ─────────────────────────────────────────────
+#  사이트 기본 설정
+#  배포 주소가 정해지면 baseURL 만 바꾸면 됩니다.
+# ─────────────────────────────────────────────
+baseURL = "https://example.com/"
+title = "한국어 이야기"
+defaultContentLanguage = "ko"
+locale = "ko-KR"
+timeZone = "Asia/Seoul"
+
+# 한글 글자 수·읽기 시간 계산을 정확하게
+hasCJKLanguage = true
+summaryLength = 120
+
+enableRobotsTXT = true
+enableGitInfo = false
+
+[pagination]
+  pagerSize = 10
+
+[permalinks]
+  posts = "/posts/:year/:month/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[params]
+  description = "매일 한 편씩, 한국어와 한국 문화에 관한 이야기"
+  author = "한국어 이야기"
+  # 글 하단 출처 표시 기본 문구 (공공데이터 등 출처 표기용)
+  showSource = true
+  # 홈 화면에 보여줄 최신 글 수
+  homePosts = 10
+
+[menus]
+  [[menus.main]]
+    name = "글 목록"
+    pageRef = "/posts"
+    weight = 10
+  [[menus.main]]
+    name = "카테고리"
+    pageRef = "/categories"
+    weight = 20
+  [[menus.main]]
+    name = "태그"
+    pageRef = "/tags"
+    weight = 30
+  [[menus.main]]
+    name = "소개"
+    pageRef = "/about"
+    weight = 40
+
+[markup]
+  [markup.goldmark.renderer]
+    # Airflow가 만든 본문에 HTML이 섞여도 렌더링되도록
+    unsafe = true
+  [markup.highlight]
+    style = "github"
+    noClasses = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
+
+[sitemap]
+  changeFreq = "daily"
+  priority = 0.5

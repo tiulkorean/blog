@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header class="page-head">
+  <p class="muted">{{ cond (eq .Data.Plural "tags") "태그" "카테고리" }}</p>
+  <h1>{{ if eq .Data.Plural "tags" }}#{{ end }}{{ .Title }}</h1>
+  <p class="muted">총 {{ len .Pages }}편</p>
+</header>
+<section class="list">
+  {{ $pager := .Paginate .Pages.ByDate.Reverse }}
+  {{ range $pager.Pages }}{{ partial "post-card.html" . }}{{ end }}
+</section>
+{{ partial "pagination.html" $pager }}
+{{ end }}

@@ -1,0 +1,9 @@
+<article class="card">
+  <div class="meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006. 1. 2." }}</time>
+    {{ with .Params.categories }}<span class="dot">·</span>{{ range first 1 . }}<a href="{{ (printf "/categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>{{ end }}{{ end }}
+    {{ if .Draft }}<span class="badge">초안</span>{{ end }}
+  </div>
+  <h2 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <p class="card-summary">{{ .Description | default (.Summary | plainify | truncate 120) }}</p>
+</article>

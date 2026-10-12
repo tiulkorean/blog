@@ -1,0 +1,7 @@
+{{ if gt .TotalPages 1 }}
+<nav class="pager" aria-label="페이지 이동">
+  {{ with .Prev }}<a href="{{ .URL }}">← 최신 글</a>{{ else }}<span></span>{{ end }}
+  <span class="muted">{{ .PageNumber }} / {{ .TotalPages }}</span>
+  {{ with .Next }}<a href="{{ .URL }}">이전 글 →</a>{{ else }}<span></span>{{ end }}
+</nav>
+{{ end }}

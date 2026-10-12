@@ -1,0 +1,12 @@
+# Netlify에 GitHub 저장소를 연결하면 이 설정대로 빌드됩니다.
+[build]
+  command = "hugo --gc --minify --baseURL $URL"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.167.0"
+  TZ = "Asia/Seoul"
+
+# 미리보기(PR) 배포에서는 초안도 보이게
+[context.deploy-preview]
+  command = "hugo --gc --minify -D --baseURL $DEPLOY_PRIME_URL"
